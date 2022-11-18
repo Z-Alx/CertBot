@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  certbot:
+    image: certbot/certbot:v1.8.0
+    volumes:
+      - certs:/etc/letsencrypt
+      - lets-encrypt:/var/lib/letsencrypt
+    ports:
+      - "80:80"
+    command: certonly --standalone --agree-tos --email <youraddress@mail.com> --no-eff-email -d your.matrix.domain --post-hook 'chown -R 991:991 /etc/letsencrypt/live /etc/letsencrypt/archive' --force-renewal
+    restart: "no"
+
+volumes:
+  lets-encrypt:
+    name: lets-encrypt
+  certs:
+    name: certs
