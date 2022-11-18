@@ -7,7 +7,7 @@ services:
       - lets-encrypt:/var/lib/letsencrypt
     ports:
       - "80:80"
-    command: certonly --standalone --agree-tos --email <youraddress@mail.com> --no-eff-email -d your.matrix.domain --post-hook 'chown -R 991:991 /etc/letsencrypt/live /etc/letsencrypt/archive' --force-renewal
+    command: certonly --standalone --agree-tos --email <youraddress@gmail.com> --no-eff-email -d your.domain --post-hook 'chown -R 991:991 /etc/letsencrypt/live /etc/letsencrypt/archive' --force-renewal
     restart: "no"
 
 volumes:
